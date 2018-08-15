@@ -1,12 +1,7 @@
-<header>
-    <h1>Welcome to Good Burger!</h1>
-    <h2>Home of the Good Burger!</h2>
-    <hr>
-</header>
 <div class="row">
-    <div class="col text-left">
-        <table>
-            {{#each burgers}}
+    <div class="col text-left table-responsive">
+        <table class="table">
+            {{#each Burger}}
                 {{#unless devoured}}
                     {{> burgers/burger-block devoured=true}}
                 {{/unless}}
@@ -15,7 +10,7 @@
     </div>
     <div class="col text-left">
         <table>
-            {{#each burgers}}
+            {{#each Burger}}
             <tr>
                 {{#if devoured}}
                 <td>
@@ -29,13 +24,14 @@
 </div>
 <br>
 <div class="row">
-    <div class="col text-center">
+    <div class="col-md-12 text-center">
         <form class="create-form">
             <div class="form-group">
                 <label for="burgerName"></label>
                 <textarea type="text" id="burgerName" placeholder="Can I take your order?" rows="2"></textarea>
-            </div>
+            <br>
             <button type="submit">Flip Patties</button>
+            </div>
         </form>
     </div>
 </div>

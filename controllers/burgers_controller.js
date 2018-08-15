@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router();
-
 const db = require("../models");
 
 module.exports = function(app) {
     app.get("/", (req, res) => {
+        console.log("data: " + req.body);
+        
         let query = {};
         if (req.query.customer_name) {
             query.CustomerID = req.query.customer_name;
@@ -13,8 +12,8 @@ module.exports = function(app) {
         db.Burger.findAll({
             where: query,
             include: [db.Customer]
-        }).then(function(dbBurgers) {
-            res.render("index", { burger: dbBurgers });
+        }).then(dbBurgers => {
+            res.render("index", { Burger: dbBurgers });
         });
     });
     
@@ -22,7 +21,7 @@ module.exports = function(app) {
         db.Burger.create({
             burger_name: req.body.name,
             devoured: req.body.devoured
-        }).then(function(dbBurgers) {
+        }).then(dbBurgers => {
             res.json(dbBurgers)
         });
     });
@@ -32,7 +31,7 @@ module.exports = function(app) {
             where: {
                 id: req.body.id
             }
-        }).then(function(dbBurgers) {
+        }).then(dbBurgers => {
             res.json(dbBurgers)
         })
     });

@@ -1,14 +1,11 @@
 <tr class="table-row">
     <td class="table-first-col">{{id}}. {{burger_name}}</td>
     <td>
-        <button class="change-devour" data-id="{{id}}">Eat up!</button>
+        <form method="POST" action="/api/burgers?_method=PUT" class="button-size">
+            <input type="hidden" type="text" name="burger_id" value={{id}}>
+            <input class="my-1" type="text" id="eatenBy" name="eatenBy" data-id="{{id}}" placeholder="Eaten by">
+            <button class="change-devour" data-id="{{id}}">Eat up!</button>
+        </form>
     </td>
 </tr>
 
-{{!-- <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-    <input type="hidden" type="text" name="burger_id" value={{this.id}}>
-    <br> {{!-- enter eater name here --}}
-    <input class="my-1" type="text" name="eaten_by" placeholder="Eaten by">
-    <br>
-    <button type="submit" class="btn btn-default">Devour it!</button>
-</form> --}}
